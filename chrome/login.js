@@ -18,15 +18,19 @@ $(document).on('click', '.submit', function() {
                 request.setRequestHeader("Content-Type", 'application/json');
             },
         success: function(data){
-            chrome.storage.local.set(data);
+            chrome.storage.local.set({'token_linknote': data.token});
 
-            window.location.herf = 'add.html';
+            chrome.browserAction.setPopup({"popup": "add.html"});
+            window.location.href = 'add.html';
             // setTimeout(
             //     function() {
             //         window.close();
             //     },
             //     1000
             // )
+        },
+        error: function(data) {
+            console.log(data);
         }
     });
 });

@@ -5,9 +5,10 @@
 function get_urls(){
     var url = '';
 
-    chrome.storage.local.get('token', function (result) {
+    chrome.storage.local.get('token_linknote', function (result) {
         if (result.token == undefined) {
-            window.location.herf = 'login.html';
+            chrome.browserAction.setPopup({"popup": "login.html"});
+            window.location.href = 'login.html';
         }
     });
 
@@ -24,8 +25,8 @@ $(document).on('click', '.cancel', function() {
 });
 
 $(document).on('click', '.submit', function() {
-    chrome.storage.local.get('token', function(result) {
-        var token = result.token;
+    chrome.storage.local.get('token_linknote', function(result) {
+        var token = result.token_linknote;
         var params = {'url': $('#url').text(), 'note': $('textarea').val()};
         data = JSON.stringify(params);
         $.ajax({
@@ -38,7 +39,8 @@ $(document).on('click', '.submit', function() {
             },
             success: function(data){
                 if (data.error) {
-                    window.location.herf = 'login.html';
+                    chrome.browserAction.setPopup({"popup": "login.html"});
+                    window.location.href = 'login.html';
                 }
                 else {
                     document.body.innerHTML = '<h2 style="margin-top: 100px;"> 페이지 저장이 성공적으로 마무리되었습니다.</h2>';
@@ -52,7 +54,8 @@ $(document).on('click', '.submit', function() {
             },
             error: function(data) {
                 console.log(data);
-                window.location.herf = 'login.html';
+                chrome.browserAction.setPopup({"popup": "login.html"});
+                window.location.href = 'login.html';
             }
         });    
     });
