@@ -20,7 +20,7 @@ $(document).on('click', '.submit', function() {
         success: function(data){
             chrome.storage.local.set(data);
 
-            chrome.browserAction.setPopup({"popup": "add.html"});
+            window.location.herf = 'add.html';
             // setTimeout(
             //     function() {
             //         window.close();

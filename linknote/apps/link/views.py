@@ -22,7 +22,6 @@ class LinkAddAPI(ContextMixin, JSONWebTokenAuthMixin, View):
 
     def post(self, request, *args, **kwargs):
         data = json.loads(request.body)
-        print request.user
         link = Link(
             user=request.user,
             url=data['url'],

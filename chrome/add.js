@@ -7,7 +7,7 @@ function get_urls(){
 
     chrome.storage.local.get('token', function (result) {
         if (result.token == undefined) {
-            chrome.browserAction.setPopup({"popup": "login.html"});
+            window.location.herf = 'login.html';
         }
     });
 
@@ -38,7 +38,7 @@ $(document).on('click', '.submit', function() {
             },
             success: function(data){
                 if (data.error) {
-                    chrome.browserAction.setPopup({"popup": "login.html"});
+                    window.location.herf = 'login.html';
                 }
                 else {
                     document.body.innerHTML = '<h2 style="margin-top: 100px;"> 페이지 저장이 성공적으로 마무리되었습니다.</h2>';
@@ -52,7 +52,7 @@ $(document).on('click', '.submit', function() {
             },
             error: function(data) {
                 console.log(data);
-                chrome.browserAction.setPopup({"popup": "login.html"});
+                window.location.herf = 'login.html';
             }
         });    
     });
