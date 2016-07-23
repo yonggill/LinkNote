@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+
+{% block subtitle %}내 링크 리스트{% endblock subtitle %}
+
+{% block bodyclass %}
+ link-list page-header-fixed compact-menu page-horizontal-bar
+{% endblock bodyclass %}
+
+{% block body %}
+<div class="overlay"></div>
+        <form class="search-form" action="#" method="GET">
+            <div class="input-group">
+                <input type="text" name="search" class="form-control search-input" placeholder="Search...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default close-search waves-effect waves-button waves-classic" type="button"><i class="fa fa-times"></i></button>
+                </span>
+            </div><!-- Input Group -->
+        </form><!-- Search Form -->
+        <main class="page-content content-wrap">
+            <div class="navbar">
+                <div class="navbar-inner container">
+                    <div class="sidebar-pusher">
+                        <a href="javascript:void(0);" class="waves-effect waves-button waves-classic push-sidebar">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </div>
+                    <div class="logo-box">
+                        <a href="/" class="logo-text"><span>LinkNote</span></a>
+                    </div><!-- Logo Box -->
+                    <div class="search-button">
+                        <a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search"><i class="fa fa-search"></i></a>
+                    </div>
+                    <div class="topmenu-outer">
+                        <div class="top-menu">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    <a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search"><i class="fa fa-search"></i></a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown">
+                                        <span class="user-name">{{ request.user.username }}<i class="fa fa-angle-down"></i></span>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-list" role="menu">
+                                        <li role="presentation"><a href="/accounts/setting/"><i class="fa fa-user"></i>Profile</a></li>
+                                        <li role="presentation"><a href="/accounts/logout/"><i class="fa fa-sign-out m-r-xs"></i>Log out</a></li>
+                                    </ul>
+                                </li>
+                            </ul><!-- Nav -->
+                        </div><!-- Top Menu -->
+                    </div>
+                </div>
+            </div><!-- Navbar -->
+            <div class="page-sidebar sidebar horizontal-bar">
+                <div class="page-sidebar-inner">
+                    <ul class="menu accordion-menu">
+                        <li class="nav-heading"><span>Navigation</span></li>
+                        <li><a href="/link/my_link/"><span class="menu-icon icon-link"></span><p>내 링크</p></a></li>
+                        <li><a href="/accounts/setting/"><span class="menu-icon icon-settings"></span><p>계정 관리</p></a></li>
+                    </ul>
+                </div><!-- Page Sidebar Inner -->
+            </div><!-- Page Sidebar -->
+            <div class="page-inner">
+                <div id="main-wrapper" class="container">
+                    <div class="row m-t-md">
+                        <div class="col-md-12">
+                            <div class="row mailbox-header">
+                                <div class="col-md-6">
+                                    <h2>내 링크</h2>
+                                </div>
+                                <div class="col-md-6">
+                                    <form action="." method="GET">
+                                        <div class="input-group">
+                                            <input type="text" name="search" class="form-control input-search" placeholder="Search...">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+                                            </span>
+                                        </div><!-- Input Group -->
+                                    </form>
+                               </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="panel panel-white">
+                            <div class="panel-body mailbox-content">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th colspan="1" class="hidden-xs">
+                                            <span><input type="checkbox" class="check-mail-all"></span>
+                                        </th>
+                                        <th class="text-right" colspan="5">
+                                            <span class="text-muted m-r-sm">총 {{ request.user.links.all.count }} 개의 링크가 있습니다.</span>
+                                            <a class="btn btn-default m-r-sm" data-toggle="tooltip" data-placement="top" title="Refresh"><i class="fa fa-refresh"></i></a>
+                                            <div class="btn-group m-r-sm mail-hidden-options">
+                                                <a class="btn btn-default" data-toggle="tooltip" data-placement="top" title="삭제하기"><i class="fa fa-trash"></i></a>
+                                                <a class="btn btn-default" data-toggle="tooltip" data-placement="top" title="수정하기"><i class="fa fa-exclamation-circle"></i></a>
+                                            </div>
+                                            <div class="btn-group">
+                                                <a class="btn btn-default"><i class="fa fa-angle-left"></i></a>
+                                                <a class="btn btn-default"><i class="fa fa-angle-right"></i></a>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for link in request.user.links.all %}
+                                    <tr class="unread" data-url="{{ link.url }}">
+                                        <td class="hidden-xs">
+                                            <span><input type="checkbox" class="checkbox-mail"></span>
+                                        </td>
+                                        <td class="hidden-xs">
+                                            <i class="fa fa-star icon-state-warning"></i>
+                                        </td>
+                                        <td class="hidden-xs">
+                                            {{ link.domain }}
+                                        </td>
+                                        <td>
+                                            {{ link.note | linebreaksbr }}
+                                        </td>
+                                        <td>
+                                            {{ link.date_created }}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+
+                                </tbody>
+                            </table>
+                            </div>
+                            </div>
+                        </div>
+                    </div><!-- Row -->
+                </div><!-- Main Wrapper -->
+                <div class="page-footer">
+                    <div class="container">
+                        <p class="no-s">2016 &copy; Modern by Steelcoders.</p>
+                    </div>
+                </div>
+            </div><!-- Page Inner -->
+        </main><!-- Page Content -->
+        <nav class="cd-nav-container" id="cd-nav">
+            <header>
+                <h3>Navigation</h3>
+                <a href="#0" class="cd-close-nav">Close</a>
+            </header>
+            <ul class="cd-nav list-unstyled">
+                <li class="cd-selected" data-menu="index">
+                    <a href="javsacript:void(0);">
+                        <span>
+                            <i class="glyphicon glyphicon-home"></i>
+                        </span>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li data-menu="profile">
+                    <a href="javsacript:void(0);">
+                        <span>
+                            <i class="glyphicon glyphicon-user"></i>
+                        </span>
+                        <p>Profile</p>
+                    </a>
+                </li>
+                <li data-menu="inbox">
+                    <a href="javsacript:void(0);">
+                        <span>
+                            <i class="glyphicon glyphicon-envelope"></i>
+                        </span>
+                        <p>Mailbox</p>
+                    </a>
+                </li>
+                <li data-menu="#">
+                    <a href="javsacript:void(0);">
+                        <span>
+                            <i class="glyphicon glyphicon-tasks"></i>
+                        </span>
+                        <p>Tasks</p>
+                    </a>
+                </li>
+                <li data-menu="#">
+                    <a href="javsacript:void(0);">
+                        <span>
+                            <i class="glyphicon glyphicon-cog"></i>
+                        </span>
+                        <p>Settings</p>
+                    </a>
+                </li>
+                <li data-menu="calendar">
+                    <a href="javsacript:void(0);">
+                        <span>
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </span>
+                        <p>Calendar</p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="cd-overlay"></div>
+
+{% endblock body %}

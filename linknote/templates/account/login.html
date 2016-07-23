@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block subtitle %}로그인{% endblock subtitle %}
+
+{% block bodyclass %}
+ page-login
+{% endblock bodyclass %}
+
+{% block body %}
+        <main class="page-content">
+            <div class="page-inner">
+                <div id="main-wrapper">
+                    <div class="row">
+                        <div class="col-md-3 center">
+                            <div class="login-box">
+                                <a href="index.html" class="logo-name text-lg text-center">LinkNote</a>
+                                <p class="text-center m-t-md">아이디와 비밀번호를 입력해주세요.</p>
+                                <form class="m-t-md" action="." method="POST">{% csrf_token %}
+                                    <input type="hidden" name="next" value="{{ next }}" />
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="아이디" name="username" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="비밀번호" name="password" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-success btn-block">로그인</button>
+                                    <a href="/accounts/password_reset/" class="display-block text-center m-t-md text-sm">비밀번호 찾기</a>
+                                    <p class="text-center m-t-xs text-sm">계정이 없으신가요?</p>
+                                    <a href="/accounts/signup/" class="btn btn-default btn-block m-t-md">회원가입</a>
+                                </form>
+                                <p class="text-center m-t-xs text-sm">2016 &copy; LinkNote by PoohAndMaster.</p>
+                            </div>
+                        </div>
+                    </div><!-- Row -->
+                </div><!-- Main Wrapper -->
+            </div><!-- Page Inner -->
+        </main><!-- Page Content -->
+
+{% endblock body %}

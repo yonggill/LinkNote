@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{% load i18n static %}
+<html>
+    <head>
+
+        <!-- Title -->
+        <title>LinkNote | {% block subtitle %}{% endblock subtitle %}</title>
+
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
+        <meta charset="UTF-8">
+        <meta name="description" content="Admin Dashboard Template" />
+        <meta name="keywords" content="admin,dashboard" />
+        <meta name="author" content="Steelcoders" />
+
+        <!-- Styles -->
+        <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700' rel='stylesheet' type='text/css'>
+        <link href="{% static "third_party/pace-master/themes/blue/pace-theme-flash.css" %}" rel="stylesheet"/>
+        <link href="{% static "third_party/uniform/css/uniform.default.min.css" %}" rel="stylesheet"/>
+        <link href="{% static "third_party/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet" type="text/css"/>
+        <link href="{% static "third_party/fontawesome/css/font-awesome.css" %}" rel="stylesheet" type="text/css"/>
+        <link href="{% static "third_party/line-icons/simple-line-icons.css" %}" rel="stylesheet" type="text/css"/>
+        <link href="{% static "third_party/waves/waves.min.css" %}" rel="stylesheet" type="text/css"/>
+        <link href="{% static "third_party/switchery/switchery.min.css" %}" rel="stylesheet" type="text/css"/>
+        <link href="{% static "third_party/3d-bold-navigation/css/style.css" %}" rel="stylesheet" type="text/css"/>
+        <link href="{% static "third_party/slidepushmenus/css/component.css" %}" rel="stylesheet" type="text/css"/>
+
+        <!-- Theme Styles -->
+        <link href="{% static "css/modern.min.css" %}" rel="stylesheet" type="text/css"/>
+        <link href="{% static "css/custom.css" %}" rel="stylesheet" type="text/css"/>
+
+        <script src="{% static "third_party/3d-bold-navigation/js/modernizr.js" %}"></script>
+
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    </head>
+    <body class="{% block bodyclass %}{% endblock bodyclass %}">
+
+        {% block body %}
+        {% endblock body %}
+
+        <!-- Javascripts -->
+        <script src="{% static "third_party/jquery/jquery-2.1.4.min.js" %}"></script>
+        <script src="{% static "third_party/jquery-ui/jquery-ui.min.js" %}"></script>
+        <script src="{% static "third_party/pace-master/pace.min.js" %}"></script>
+        <script src="{% static "third_party/jquery-blockui/jquery.blockui.js" %}"></script>
+        <script src="{% static "third_party/bootstrap/js/bootstrap.min.js" %}"></script>
+        <script src="{% static "third_party/jquery-slimscroll/jquery.slimscroll.min.js" %}"></script>
+        <script src="{% static "third_party/switchery/switchery.min.js" %}"></script>
+        <script src="{% static "third_party/uniform/jquery.uniform.min.js" %}"></script>
+        <script src="{% static "third_party/classie/classie.js" %}"></script>
+        <script src="{% static "third_party/waves/waves.min.js" %}"></script>
+        <script src="{% static "third_party/3d-bold-navigation/js/main.js" %}"></script>
+        <script src="{% static "js/modern.min.js" %}"></script>
+        <script src="{% static "js/pages/inbox.js" %}"></script>
+
+        {% block extrascript %}
+        {% endblock extrascript %}
+
+    </body>
+</html>

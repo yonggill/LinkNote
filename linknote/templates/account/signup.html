@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block subtitle %}회원가입{% endblock subtitle %}
+
+{% block bodyclass %}
+ page-register
+{% endblock bodyclass %}
+
+{% block body %}
+        <main class="page-content">
+            <div class="page-inner">
+                <div id="main-wrapper">
+                    <div class="row">
+                        <div class="col-md-3 center">
+                            <div class="login-box">
+                                <a href="index.html" class="logo-name text-lg text-center">LinkNote</a>
+                                <p class="text-center m-t-md">회원 가입을 위한 기초 정보를 입력해주세요.</p>
+                                <form class="m-t-md" action="." method="POST">{% csrf_token %}
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="아이디" name="username" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" placeholder="이메일" name="email" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="비밀번호" name="password1" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="비밀번호 확인" name="password2" required>
+                                    </div>
+                                    <label>
+                                        <input type="checkbox"> 이용약관에 동의하시나요?
+                                    </label>
+                                    <button type="submit" class="btn btn-success btn-block m-t-xs">회원가입</button>
+                                    <p class="text-center m-t-xs text-sm">이미 계정이 있으신가요?</p>
+                                    <a href="/accounts/login/" class="btn btn-default btn-block m-t-xs">로그인</a>
+                                </form>
+                                <p class="text-center m-t-xs text-sm">2015 &copy; Modern by Steelcoders.</p>
+                            </div>
+                        </div>
+                    </div><!-- Row -->
+                </div><!-- Main Wrapper -->
+            </div><!-- Page Inner -->
+        </main><!-- Page Content -->
+{% endblock body %}

@@ -1,0 +1,17 @@
+{
+    "manifest_version": 2,
+
+    "name": "LinkNote",
+    "description": "Link Note",
+    "version": "1.0",
+
+    "browser_action": {
+        "default_icon": "normal.png",
+        "default_popup": "add.html"
+    },
+    "permissions": [
+        "tabs",
+        "storage",
+        "<all_urls>"
+    ]
+}

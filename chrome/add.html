@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        BODY {
+            width      : 500px;
+        }
+    </style>
+    <link href="form.css" rel="stylesheet" type="text/css">
+    <script src="jquery-2.1.4.min.js"></script>
+    <script src="oauth2/oauth2.js"></script>
+    <script src="add.js"></script>
+</head>
+<body>
+    <h2>이 페이지와 노트를 저장할까요?</h2>
+    <div class="input-grp">
+        <label>url</label>
+        <p id="url"></p>
+    </div>
+    <div class="input-grp">
+        <label>메모</label>
+        <textarea rows="5" autofocus></textarea>
+    </div>
+<div class="button-group">
+    <button class="submit" type="button">저장하기</button>
+    <button class="cancel" type="button">취소하기</button>
+</div>
+</body>
+</html>
