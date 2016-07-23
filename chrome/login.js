@@ -11,7 +11,7 @@ $(document).on('click', '.submit', function() {
     data = JSON.stringify(params);
     $.ajax({
         type: "POST",
-        url: 'http://localhost:8000/api-token-auth/',
+        url: 'http://linknote.yonggari.net/api-token-auth/',
         data: data,
         beforeSend: function (request)
             {

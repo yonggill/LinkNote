@@ -30,7 +30,7 @@ $(document).on('click', '.submit', function() {
         data = JSON.stringify(params);
         $.ajax({
             type: "POST",
-            url: 'http://localhost:8000/link/add/',
+            url: 'http://linknote.yonggari.net/link/add/',
             data: data,
             beforeSend: function (request)
             {
