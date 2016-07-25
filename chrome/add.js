@@ -29,6 +29,7 @@ function get_urls(){
                 success: function (data) {
                     if (data.success == true) {
                         $('#data_section').css('display', 'block');
+                        console.log(data.note)
                         $('#data_view').html(data.note);
                         $('#login_section').css('display', 'none');
                         $('#add_section').css('display', 'none');
