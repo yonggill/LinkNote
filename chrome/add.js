@@ -11,8 +11,31 @@ function get_urls(){
             $('#add_section').css('display', 'none');
         }
         else {
-            $('#add_section').css('display', 'block');
-            $('#login_section').css('display', 'none');
+            $.ajax({
+                type: "GET",
+                url: 'http://linknote.yonggari.net/link/data/',
+                beforeSend: function (request)
+                    {
+                        request.setRequestHeader("Authorization", 'Bearer '+token);
+                    },
+                success: function (data) {
+                    if (data.success == true) {
+                        $('#data_section').css('display', 'block');
+                        $('#data_view').html(data.note);
+                        $('#login_section').css('display', 'none');
+                        $('#add_section').css('display', 'none');
+                    }
+                    else {
+                        $('#add_section').css('display', 'block');
+                        $('#login_section').css('display', 'none');
+                    }
+                },
+                error: function (data) {
+                    $('#add_section').css('display', 'block');
+                    $('#login_section').css('display', 'none');
+                }
+            });
+
         }
     });
 

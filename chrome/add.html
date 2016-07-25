@@ -11,8 +11,20 @@
     <script src="oauth2/oauth2.js"></script>
     <script src="add.js"></script>
     <script src="login.js"></script>
+    <script src="data.js"></script>
 </head>
 <body>
+<section id="data_section"  style="display:none;">
+    <h2>이 url에 저장된 note입니다.</h2>
+    <div class="input-grp">
+        <label>메모</label>
+        <textarea id="data_view" rows="10" autofocus></textarea>
+    </div>
+    <div class="button-group">
+        <button class="submit submit-data" type="button">수정하기</button>
+        <button class="cancel cancel-data" type="button">닫기</button>
+    </div>
+</section>
 <section id="add_section"  style="display:none;">
     <h2>이 페이지와 노트를 저장할까요?</h2>
     <div class="input-grp">

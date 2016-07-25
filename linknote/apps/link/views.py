@@ -29,3 +29,23 @@ class LinkAddAPI(ContextMixin, JSONWebTokenAuthMixin, View):
         )
         link.save()
         return HttpResponse(json.dumps({'success': True}), content_type='application/json')
+
+
+class LinkDataAPI(ContextMixin, JSONWebTokenAuthMixin, View):
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super(LinkDataAPI, self).dispatch(request, *args, **kwargs)
+
+    def get(self, request, *args, **kwargs):
+        data = json.loads(request.body)
+        note = ''
+        try:
+            link = Link.objects.get(
+                user=request.user,
+                url=data['url']
+            )
+            note = link.note
+            success = True
+        except:
+            success = False
+        return HttpResponse(json.dumps({'success': success, 'note': note}), content_type='application/json')

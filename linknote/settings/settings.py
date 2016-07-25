@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 
 import os
 from os.path import abspath, join, dirname, normpath
+import datetime
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -126,6 +127,8 @@ USE_TZ = True
 
 CORS_ORIGIN_ALLOW_ALL = True
 
+
+JWT_EXPIRATION_DELTA = datetime.timedelta(days=7)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/

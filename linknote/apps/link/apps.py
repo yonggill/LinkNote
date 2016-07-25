@@ -17,7 +17,11 @@ class LinkApp(Application):
 
             url(r'^add/$',
                 LinkAddAPI.as_view(),
-                name='add')
+                name='add'),
+
+            url(r'^data/$',
+                LinkDataAPI.as_view(),
+                name='data')
         ]
         return urls
 
