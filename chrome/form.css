@@ -1,4 +1,6 @@
 /* General Styles */
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
 html{
    background-size: cover;
    height:100%;
@@ -17,7 +19,7 @@ html{
 }
 body {
    color: #C0C0C0;
-   font-family: Arial, san-serif;
+   font-family: 'Nanum Gothic', Arial, san-serif, serif;
    padding: 25px 30px;
 }
 
