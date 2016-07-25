@@ -63,6 +63,7 @@ $(document).on('click', '.submit-add', function() {
         var token = result.token_linknote;
         var params = {'url': $('#url').text(), 'note': $('#add_view').val()};
         var data = JSON.stringify(params);
+        console.log(data);
         $.ajax({
             type: "POST",
             url: 'http://linknote.yonggari.net/link/add/',

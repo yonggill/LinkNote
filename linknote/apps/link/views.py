@@ -44,7 +44,7 @@ class LinkDataAPI(ContextMixin, JSONWebTokenAuthMixin, View):
                 user=request.user,
                 url=data['url']
             )
-            if data['note'] != '' and data['note'] != link.note:
+            if 'note' in data and data['note'] != '' and data['note'] != link.note:
                 link.note = data['note']
                 link.save()
         except:
