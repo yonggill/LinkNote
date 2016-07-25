@@ -10,11 +10,11 @@ $(document).on('click', '.cancel-data', function() {
 $(document).on('click', '.submit-data', function() {
     chrome.storage.local.get('token_linknote', function(result) {
         var token = result.token_linknote;
-        var params = {'url': $('#url').text(), 'note': $('textarea').val()};
+        var params = {'url': $('#url').text(), 'note': $('#data_view').html()};
         data = JSON.stringify(params);
         $.ajax({
             type: "POST",
-            url: 'http://linknote.yonggari.net/link/add/',
+            url: 'http://linknote.yonggari.net/link/data/',
             data: data,
             beforeSend: function (request)
             {

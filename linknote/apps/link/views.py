@@ -39,11 +39,20 @@ class LinkDataAPI(ContextMixin, JSONWebTokenAuthMixin, View):
     def post(self, request, *args, **kwargs):
         data = json.loads(request.body)
         note = ''
-        link = Link.objects.get(
-            user=request.user,
-            url=data['url']
-        )
+        try:
+            link = Link.objects.get(
+                user=request.user,
+                url=data['url']
+            )
+            if data['note'] != '' and data['note'] != link.note:
+                link.note = data['note']
+                link.save()
+        except:
+            link = Link(
+                user=request.user,
+                url=data['url'],
+                note=data['note']
+            )
         note = link.note
-        print link.note
         success = True
         return HttpResponse(json.dumps({'success': success, 'note': note}), content_type='application/json')

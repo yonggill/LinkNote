@@ -17,7 +17,7 @@ function get_urls(){
         else {
             var token = result.token_linknote;
             var params = {'url': $('#url').text()};
-            var data = JSON.stringify(params);
+            data = JSON.stringify(params);
             $.ajax({
                 type: "POST",
                 url: 'http://linknote.yonggari.net/link/data/',
@@ -29,7 +29,6 @@ function get_urls(){
                 success: function (data) {
                     if (data.success == true) {
                         $('#data_section').css('display', 'block');
-                        console.log(data.note)
                         $('#data_view').html(data.note);
                         $('#login_section').css('display', 'none');
                         $('#add_section').css('display', 'none');
@@ -62,7 +61,7 @@ $(document).on('click', '.cancel-add', function() {
 $(document).on('click', '.submit-add', function() {
     chrome.storage.local.get('token_linknote', function(result) {
         var token = result.token_linknote;
-        var params = {'url': $('#url').text(), 'note': $('textarea').val()};
+        var params = {'url': $('#url').text(), 'note': $('#add_view').val()};
         var data = JSON.stringify(params);
         $.ajax({
             type: "POST",
