@@ -36,7 +36,7 @@ class LinkDataAPI(ContextMixin, JSONWebTokenAuthMixin, View):
     def dispatch(self, request, *args, **kwargs):
         return super(LinkDataAPI, self).dispatch(request, *args, **kwargs)
 
-    def get(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         data = json.loads(request.body)
         note = ''
         try:

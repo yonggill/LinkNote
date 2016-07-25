@@ -5,18 +5,26 @@
 function get_urls(){
     var url = '';
 
+    chrome.tabs.query({currentWindow: true, active: true}, function(tabs){
+        $('#url').html(tabs[0].url);
+    });
+
     chrome.storage.local.get('token_linknote', function (result) {
         if (result.token_linknote == undefined) {
             $('#login_section').css('display', 'block');
             $('#add_section').css('display', 'none');
         }
         else {
+            var token = result.token_linknote;
+            var params = {'url': $('#url').text()};
+            var data = JSON.stringify(params);
             $.ajax({
-                type: "GET",
+                type: "POST",
                 url: 'http://linknote.yonggari.net/link/data/',
+                data: data,
                 beforeSend: function (request)
                     {
-                        request.setRequestHeader("Authorization", 'Bearer '+token);
+                        request.setRequestHeader("Authorization", 'Bearer '+ token);
                     },
                 success: function (data) {
                     if (data.success == true) {
@@ -26,6 +34,7 @@ function get_urls(){
                         $('#add_section').css('display', 'none');
                     }
                     else {
+                        $('#data_section').css('display', 'none');
                         $('#add_section').css('display', 'block');
                         $('#login_section').css('display', 'none');
                     }
@@ -33,15 +42,13 @@ function get_urls(){
                 error: function (data) {
                     $('#add_section').css('display', 'block');
                     $('#login_section').css('display', 'none');
+                    console.log(data)
                 }
             });
 
         }
     });
 
-    chrome.tabs.query({currentWindow: true, active: true}, function(tabs){
-        $('#url').html(tabs[0].url);
-    });
 }
 
 
@@ -55,7 +62,7 @@ $(document).on('click', '.submit-add', function() {
     chrome.storage.local.get('token_linknote', function(result) {
         var token = result.token_linknote;
         var params = {'url': $('#url').text(), 'note': $('textarea').val()};
-        data = JSON.stringify(params);
+        var data = JSON.stringify(params);
         $.ajax({
             type: "POST",
             url: 'http://linknote.yonggari.net/link/add/',

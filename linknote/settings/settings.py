@@ -127,7 +127,6 @@ USE_TZ = True
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-
 JWT_EXPIRATION_DELTA = datetime.timedelta(days=7)
 
 # Static files (CSS, JavaScript, Images)
