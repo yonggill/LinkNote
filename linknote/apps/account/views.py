@@ -25,11 +25,7 @@ class LoginView(TemplateView):
             password = request.POST['password']
             user = authenticate(username=username, password=password)
 
-            if 'next' in request.POST:
-                url = request.POST['next']
-                print url
-            else:
-                url = '/link/my_link/'
+            url = '/link/my_link/'
             if user is not None:
                 if user.is_active:
                     login(request, user)

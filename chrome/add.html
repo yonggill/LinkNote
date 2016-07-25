@@ -10,8 +10,10 @@
     <script src="jquery-2.1.4.min.js"></script>
     <script src="oauth2/oauth2.js"></script>
     <script src="add.js"></script>
+    <script src="login.js"></script>
 </head>
 <body>
+<section id="add_section"  style="display:none;">
     <h2>이 페이지와 노트를 저장할까요?</h2>
     <div class="input-grp">
         <label>url</label>
@@ -21,9 +23,26 @@
         <label>메모</label>
         <textarea rows="5" autofocus></textarea>
     </div>
-<div class="button-group">
-    <button class="submit" type="button">저장하기</button>
-    <button class="cancel" type="button">취소하기</button>
-</div>
+    <div class="button-group">
+        <button class="submit submit-add" type="button">저장하기</button>
+        <button class="cancel cancel-add" type="button">취소하기</button>
+    </div>
+</section>
+<section id="login_section" style="display:none;">
+    <h2>계정에 로그인해주세요.</h2>
+    <h2>계정이 없으신가요? <a href="http://linknote.yonggari.net/accounts/signup/" style="color: #ffffff; text-decoration: none; font-weight: bolder;">회원가입</a></h2>
+    <div class="input-grp">
+        <label style="display: block;">아이디</label>
+        <input type="text" id="username">
+    </div>
+    <div class="input-grp">
+        <label style="display: block;">비밀번호</label>
+        <input type="password" id="password">
+    </div>
+    <div class="button-group">
+        <button class="submit submit-login" type="button">로그인</button>
+        <button class="cancel cancel-login" type="button">취소하기</button>
+    </div>
+</section>
 </body>
 </html>

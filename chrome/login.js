@@ -2,11 +2,11 @@
  * Created by wishket_yg on 2016. 7. 23..
  */
 
-$(document).on('click', '.cancel', function() {
+$(document).on('click', '.cancel-login', function() {
     window.close();
 });
 
-$(document).on('click', '.submit', function() {
+$(document).on('click', '.submit-login', function() {
     var params = {'username': $('#username').val(), 'password': $('#password').val()};
     data = JSON.stringify(params);
     $.ajax({
@@ -20,8 +20,8 @@ $(document).on('click', '.submit', function() {
         success: function(data){
             chrome.storage.local.set({'token_linknote': data.token});
 
-            chrome.browserAction.setPopup({"popup": "add.html"});
-            window.location.href = 'add.html';
+            $('#add_section').css('display', 'block');
+            $('#login_section').css('display', 'none');
             // setTimeout(
             //     function() {
             //         window.close();

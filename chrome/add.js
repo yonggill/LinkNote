@@ -6,9 +6,13 @@ function get_urls(){
     var url = '';
 
     chrome.storage.local.get('token_linknote', function (result) {
-        if (result.token == undefined) {
-            chrome.browserAction.setPopup({"popup": "login.html"});
-            window.location.href = 'login.html';
+        if (result.token_linknote == undefined) {
+            $('#login_section').css('display', 'block');
+            $('#add_section').css('display', 'none');
+        }
+        else {
+            $('#add_section').css('display', 'block');
+            $('#login_section').css('display', 'none');
         }
     });
 
@@ -20,11 +24,11 @@ function get_urls(){
 
 
 
-$(document).on('click', '.cancel', function() {
+$(document).on('click', '.cancel-add', function() {
     window.close();
 });
 
-$(document).on('click', '.submit', function() {
+$(document).on('click', '.submit-add', function() {
     chrome.storage.local.get('token_linknote', function(result) {
         var token = result.token_linknote;
         var params = {'url': $('#url').text(), 'note': $('textarea').val()};
@@ -39,8 +43,8 @@ $(document).on('click', '.submit', function() {
             },
             success: function(data){
                 if (data.error) {
-                    chrome.browserAction.setPopup({"popup": "login.html"});
-                    window.location.href = 'login.html';
+                    $('#login_section').css('display', 'block');
+                    $('#add_section').css('display', 'none');
                 }
                 else {
                     document.body.innerHTML = '<h2 style="margin-top: 100px;"> 페이지 저장이 성공적으로 마무리되었습니다.</h2>';
@@ -53,9 +57,8 @@ $(document).on('click', '.submit', function() {
                 }
             },
             error: function(data) {
-                console.log(data);
-                chrome.browserAction.setPopup({"popup": "login.html"});
-                window.location.href = 'login.html';
+                $('#login_section').css('display', 'block');
+                $('#add_section').css('display', 'none');
             }
         });    
     });
